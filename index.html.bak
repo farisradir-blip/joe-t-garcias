@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joe T. Garcia's - A Legendary Fort Worth Experience Since 1935</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8B2635;
+            --primary-dark: #6B1E2A;
+            --secondary: #2D5016;
+            --accent: #C4A35A;
+            --accent-light: #D4B76A;
+            --cream: #F5F0E8;
+            --warm-white: #FAF8F5;
+            --dark: #1A1A1A;
+            --text: #2C2C2C;
+            --text-light: #6B6B6B;
+            --border: #E5E0D8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background: var(--warm-white);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 0 2rem;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(26, 26, 26, 0.98);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1550989460-0adf9ea622e2?w=1920') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--dark);
+            padding: 0.5rem 1.5rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .hero-date {
+            font-size: 1.1rem;
+            color: var(--accent-light);
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-buttons {
+            margin-top: 2.5rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--dark);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(196, 163, 90, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+        }
+
+        .btn-outline:hover {
+            background: #fff;
+            color: var(--dark);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        .scroll-indicator svg {
+            width: 30px;
+            height: 30px;
+            fill: #fff;
+            opacity: 0.7;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.8rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-header .divider {
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            margin: 0 auto 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--cream);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .about-image .experience-badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background: var(--primary);
+            color: #fff;
+            padding: 1.5rem 2rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(139, 38, 53, 0.3);
+        }
+
+        .experience-badge .years {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .experience-badge .text {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 0.25rem;
+        }
+
+        .about-content h3 {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .feature-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--dark);
+        }
+
+        .feature-text h4 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .feature-text p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        /* Menu Section */
+        .menu-section {
+            background: var(--warm-white);
+        }
+
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .menu-tab {
+            padding: 0.75rem 2rem;
+            background: transparent;
+            border: 2px solid var(--border);
+            color: var(--text);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 4px;
+        }
+
+        .menu-tab.active,
+        .menu-tab:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #fff;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        .menu-card-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 3rem;
+        }
+
+        .menu-card-content {
+            padding: 1.5rem;
+        }
+
+        .menu-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+        }
+
+        .menu-card h3 {
+            font-size: 1.3rem;
+            color: var(--dark);
+        }
+
+        .menu-price {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .menu-card p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .menu-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--dark);
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-radius: 4px;
+            margin-top: 0.75rem;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background: var(--dark);
+            color: #fff;
+        }
+
+        .gallery .section-header h2 {
+            color: #fff;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            aspect-ratio: 1;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .gallery-item:hover .gallery-item-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item-overlay h4 {
+            font-size: 1.1rem;
+            color: #fff;
+        }
+
+        /* Reviews Section */
+        .reviews {
+            background: var(--cream);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .review-card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .reviewer-name {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .review-date {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .review-stars {
+            display: flex;
+            gap: 0.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .review-stars svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--accent);
+        }
+
+        .review-text {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .review-source {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .review-source img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .review-platforms {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .platform-stat {
+            text-align: center;
+        }
+
+        .platform-stat .rating {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .platform-stat .stars {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .platform-stat .reviews-count {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 0.25rem;
+        }
+
+        /* Location & Hours Section */
+        .location {
+            background: var(--warm-white);
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .location-map {
+            background: var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            height: 100%;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .location-map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            position: absolute;
+            inset: 0;
+        }
+
+        .location-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .info-block {
+            margin-bottom: 2rem;
+        }
+
+        .info-block h4 {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-block h4 svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--primary);
+        }
+
+        .info-block p,
+        .info-block li {
+            font-size: 1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .info-block ul {
+            list-style: none;
+        }
+
+        .hours-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .hours-table tr {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hours-table td {
+            padding: 0.75rem 0;
+            font-size: 0.95rem;
+        }
+
+        .hours-table td:first-child {
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .hours-table td:last-child {
+            text-align: right;
+            color: var(--text-light);
+        }
+
+        .cash-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary);
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .contact-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .contact-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        /* Reservations Section */
+        .reservations {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920') center/cover fixed;
+            color: #fff;
+            text-align: center;
+        }
+
+        .reservations h2 {
+            font-size: 2.8rem;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .reservations p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .reservation-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 800px;
+            margin: 2rem auto 0;
+        }
+
+        .reservation-item {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .reservation-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .reservation-item p {
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: #fff;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            font-size: 0.95rem;
+            color: #aaa;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+        }
+
+        .social-links a svg {
+            width: 20px;
+            height: 20px;
+            fill: #fff;
+        }
+
+        .footer-column h4 {
+            font-size: 1.1rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-column a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .about-grid,
+            .location-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .reservation-info {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Joe T. Garcia's</a>
+            <ul class="nav-links">
+                <li><a href="#about">Our Story</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#location">Location</a></li>
+                <li><a href="#reservations">Reservations</a></li>
+            </ul>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">Established July 4, 1935</div>
+            <h1>A Legendary<br>Fort Worth Experience</h1>
+            <p class="hero-subtitle">A Legacy of Authentic Flavors and Family Recipes</p>
+            <p class="hero-date">Serving Fort Worth for 90 Years</p>
+            <div class="hero-buttons">
+                <a href="#menu" class="btn btn-primary">View Our Menu</a>
+                <a href="#reservations" class="btn btn-outline">Make a Reservation</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="section-container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1560624052-449f5ddf0c31?w=800" alt="Joe T. Garcia's Restaurant Patio">
+                    <div class="experience-badge">
+                        <div class="years">90</div>
+                        <div class="text">Years of Tradition</div>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <h3>A Family Legacy Since 1935</h3>
+                    <p>Joe T. Garcia's Mexican Restaurant was established on July 4, 1935 by Mr. and Mrs. Joe T. Garcia in a small home on Commerce Street. What began as a modest 16-seat eatery has grown into one of Fort Worth's most beloved institutions.</p>
+                    <p>By the 1970s, Joe T. Garcia's had become one of the most popular restaurants in the Dallas-Fort Worth area. Today, the Lancarte Family continues to share their special family history with every guest who walks through the door.</p>
+                    <p>Known for our mouthwatering old-school recipes, large dining areas, and famous garden patio, customers happily wait in long lines just to experience the magic of Joe T. Garcia's.</p>
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            </div>
+                            <div class="feature-text">
+                                <h4>2201 N Commerce St</h4>
+                                <p>Fort Worth, TX 76164</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                            </div>
+                            <div class="feature-text">
+                                <h4>James Beard Award</h4>
+                                <p>America's Classics Winner</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Family Owned</h4>
+                                <p>Lancarte Family Legacy</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                            </div>
+                            <div class="feature-text">
+                                <h4>Famous Patio</h4>
+                                <p>Iconic Outdoor Dining</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Our Menu</h2>
+                <div class="divider"></div>
+                <p>Simple, classic, and generous portions - just like Mama Suez made for family gatherings. Cash only - life is simpler without the hassle of credit card machines.</p>
+            </div>
+            <div class="menu-tabs">
+                <button class="menu-tab active" data-tab="entrees">Entrees</button>
+                <button class="menu-tab" data-tab="appetizers">Appetizers</button>
+                <button class="menu-tab" data-tab="desserts">Desserts</button>
+                <button class="menu-tab" data-tab="drinks">Drinks</button>
+            </div>
+            <div class="menu-grid" id="menu-grid">
+                <div class="menu-card">
+                    <div class="menu-card-image">🌮</div>
+                    <div class="menu-card-content">
+                        <div class="menu-card-header">
+                            <h3>Fajitas</h3>
+                            <span class="menu-price">Market Price</span>
+                        </div>
+                        <p>Our legendary fajitas - the dish that made us famous. Served sizzling with grilled onions, peppers, rice, beans, and fresh tortillas.</p>
+                        <span class="menu-badge">Chef's Signature</span>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-card-image">🌯</div>
+                    <div class="menu-card-content">
+                        <div class="menu-card-header">
+                            <h3>Enchiladas</h3>
+                            <span class="menu-price">Market Price</span>
+                        </div>
+                        <p>Authentic enchiladas with Mama Suez's secret sauce recipe, passed down through generations. Choice of cheese, beef, or chicken.</p>
+                        <span class="menu-badge">Family Recipe</span>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-card-image">🥩</div>
+                    <div class="menu-card-content">
+                        <div class="menu-card-header">
+                            <h3>Tacos</h3>
+                            <span class="menu-price">Market Price</span>
+                        </div>
+                        <p>Classic tacos with your choice of filling, topped with fresh cilantro, onions, and served with homemade salsa.</p>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-card-image">🍗</div>
+                    <div class="menu-card-content">
+                        <div class="menu-card-header">
+                            <h3>Chicken Nachos</h3>
+                            <span class="menu-price">Market Price</span>
+                        </div>
+                        <p>Crispy tortilla chips loaded with seasoned chicken, melted cheese, jalapeños, and all the fixings. A crowd favorite!</p>
+                        <span class="menu-badge">Popular</span>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-card-image">🥘</div>
+                    <div class="menu-card-content">
+                        <div class="menu-card-header">
+                            <h3>Combo Dinner</h3>
+                            <span class="menu-price">Market Price</span>
+                        </div>
+                        <p>A generous combination of our most beloved dishes. Perfect for those who want to taste a bit of everything.</p>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-card-image">🍲</div>
+                    <div class="menu-card-content">
+                        <div class="menu-card-header">
+                            <h3>Tortilla Soup</h3>
+                            <span class="menu-price">Market Price</span>
+                        </div>
+                        <p>An off-the-menu special! Rich, flavorful soup with chicken, avocado, cheese, and crispy tortilla strips.</p>
+                        <span class="menu-badge">Off Menu</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Gallery</h2>
+                <div class="divider"></div>
+                <p style="color: #ccc;">Moments from our legendary patio and dining experience</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1550989460-0adf9ea622e2?w=600" alt="Restaurant Interior">
+                    <div class="gallery-item-overlay">
+                        <h4>Our Famous Patio</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600" alt="Mexican Food">
+                    <div class="gallery-item-overlay">
+                        <h4>Authentic Mexican Cuisine</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1513456852971-23c2450141ba?w=600" alt="Margaritas">
+                    <div class="gallery-item-overlay">
+                        <h4>Legendary Margaritas</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36c44?w=600" alt="Fajitas">
+                    <div class="gallery-item-overlay">
+                        <h4>Sizzling Fajitas</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=600" alt="Cocktails">
+                    <div class="gallery-item-overlay">
+                        <h4>Fresh Cocktails</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1560611588-163f295eb145?w=600" alt="Dining Area">
+                    <div class="gallery-item-overlay">
+                        <h4>Family Dining</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=600" alt="Outdoor Dining">
+                    <div class="gallery-item-overlay">
+                        <h4>Outdoor Experience</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=600" alt="Family Meal">
+                    <div class="gallery-item-overlay">
+                        <h4>Family Style</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="reviews">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>What Our Guests Say</h2>
+                <div class="divider"></div>
+                <p>Reviews from loyal customers who have made Joe T. Garcia's their family tradition</p>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <span class="reviewer-name">Sarah M.</span>
+                        <span class="review-date">June 2026</span>
+                    </div>
+                    <div class="review-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    </div>
+                    <p class="review-text">"The fajitas were delicious, and the margaritas were strong and flavorful. The patio was absolutely fabulous - there's nothing like dining under the lights in this beautiful garden setting. A Fort Worth must-do!"</p>
+                    <div class="review-source">Yelp - 5 stars</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <span class="reviewer-name">Michael R.</span>
+                        <span class="review-date">May 2026</span>
+                    </div>
+                    <div class="review-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    </div>
+                    <p class="review-text">"We've been coming here for three generations. The staff is genuinely friendly, and the atmosphere is warm and cozy. The chicken nachos were the best I've ever had, and the enchiladas are simply unforgettable."</p>
+                    <div class="review-source">TripAdvisor - 5 stars</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <span class="reviewer-name">Jennifer L.</span>
+                        <span class="review-date">April 2026</span>
+                    </div>
+                    <div class="review-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    </div>
+                    <p class="review-text">"Joe T's is truly Fort Worth's family table. The tortillas are made fresh, the margaritas are legendary, and the patio is the perfect place to celebrate any occasion. A true Texas institution!"</p>
+                    <div class="review-source">Google - 5 stars</div>
+                </div>
+            </div>
+            <div class="review-platforms">
+                <div class="platform-stat">
+                    <div class="rating">3.3</div>
+                    <div class="stars">★★★★☆</div>
+                    <div class="reviews-count">2,919 Yelp Reviews</div>
+                </div>
+                <div class="platform-stat">
+                    <div class="rating">3.9</div>
+                    <div class="stars">★★★★☆</div>
+                    <div class="reviews-count">2,944 TripAdvisor Reviews</div>
+                </div>
+                <div class="platform-stat">
+                    <div class="rating">4.2</div>
+                    <div class="stars">★★★★☆</div>
+                    <div class="reviews-count">Google Reviews</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Hours Section -->
+    <section id="location" class="location">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>Location & Hours</h2>
+                <div class="divider"></div>
+                <p>Find us in the heart of Fort Worth</p>
+            </div>
+            <div class="location-grid">
+                <div class="location-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3348.067467825932!2d-97.3456!3d32.7834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864e7128d8f3d2d1%3A0x3d3d3d3d3d3d3d3d!2sJoe%20T.%20Garcia's!5e0!3m2!1sen!2sus!4v1600000000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                <div class="location-info">
+                    <h3>Visit Us</h3>
+                    <div class="info-block">
+                        <h4>
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            Address
+                        </h4>
+                        <p>2201 N Commerce St<br>Fort Worth, TX 76164<br>Northeast Fort Worth</p>
+                    </div>
+                    <div class="info-block">
+                        <h4>
+                            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                            Hours
+                        </h4>
+                        <table class="hours-table">
+                            <tr><td>Monday - Thursday</td><td>11:00 AM - 2:30 PM<br>5:00 PM - 10:00 PM</td></tr>
+                            <tr><td>Friday - Saturday</td><td>11:00 AM - 11:00 PM</td></tr>
+                            <tr><td>Sunday</td><td>11:00 AM - 10:00 PM</td></tr>
+                        </table>
+                    </div>
+                    <div class="info-block">
+                        <h4>
+                            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                            Contact
+                        </h4>
+                        <p>Phone: (817) 626-4356</p>
+                        <p>Email: heather@joetgarcias.com</p>
+                        <p>Events: leah@joetgarcias.com | cara@joetgarcias.com</p>
+                        <div class="cash-badge">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+                            Cash Only Establishment
+                        </div>
+                    </div>
+                    <div class="contact-buttons">
+                        <a href="tel:8176264356" class="contact-btn">
+                            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                            Call Us
+                        </a>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=2201+N+Commerce+St,+Fort+Worth,+TX+76164" target="_blank" class="contact-btn">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            Get Directions
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservations Section -->
+    <section id="reservations" class="reservations">
+        <div class="section-container">
+            <h2>Reservations & Events</h2>
+            <p>Host your next celebration with us. From intimate dinners to large gatherings, we create unforgettable experiences.</p>
+            <a href="mailto:leah@joetgarcias.com" class="btn btn-primary">Contact for Reservations</a>
+            <div class="reservation-info">
+                <div class="reservation-item">
+                    <h4>Private Events</h4>
+                    <p>leah@joetgarcias.com</p>
+                </div>
+                <div class="reservation-item">
+                    <h4>Group Dining</h4>
+                    <p>cara@joetgarcias.com</p>
+                </div>
+                <div class="reservation-item">
+                    <h4>General Inquiries</h4>
+                    <p>heather@joetgarcias.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>Joe T. Garcia's</h3>
+                <p>A Fort Worth institution since 1935. The Lancarte Family continues to share their special family history with every guest, serving legendary recipes in a legendary setting.</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/joetgarcias_/" target="_blank" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                    <a href="https://www.facebook.com/joetgarcias/" target="_blank" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#about">Our Story</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Visit Us</h4>
+                <ul>
+                    <li><a href="#location">Location</a></li>
+                    <li><a href="#reservations">Reservations</a></li>
+                    <li><a href="#">Private Events</a></li>
+                    <li><a href="#">Catering</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="tel:8176264356">(817) 626-4356</a></li>
+                    <li><a href="mailto:heather@joetgarcias.com">heather@joetgarcias.com</a></li>
+                    <li><a href="#">2201 N Commerce St</a></li>
+                    <li><a href="#">Fort Worth, TX 76164</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Joe T. Garcia's Mexican Restaurant. Established 1935. All rights reserved. | Cash Only Establishment</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Menu tabs
+        const menuTabs = document.querySelectorAll('.menu-tab');
+        menuTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                menuTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+            });
+        });
+
+        // Fade in animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.menu-card, .review-card, .gallery-item, .about-content, .about-image').forEach(el => {
+            el.classList.add('fade-in');
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
